@@ -1,17 +1,17 @@
-use ::serde::Deserialize;
-use ::std::string::String;
 use crate::structs::common::*;
+use serde::Deserialize;
+use std::string::String;
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Root {
 	pub data: Vec<Channel>,
 	pub page: u16,
 	pub per_page: u16,
 	pub total_pages: u16,
-	pub total_results: u32
+	pub total_results: u32,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Channel {
 	#[serde(rename = "_index")]
 	pub index: String,
@@ -28,7 +28,7 @@ pub struct Channel {
 	pub links: Links,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Attributes {
 	pub name: String,
 	pub importance: u16,
@@ -36,12 +36,12 @@ pub struct Attributes {
 	pub brand_color: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Included {
 	pub images: Vec<Image>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Links {
 	#[serde(rename = "self")]
 	pub reference: String,

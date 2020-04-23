@@ -1,15 +1,15 @@
-use ::chrono::DateTime;
-use ::chrono::offset::FixedOffset;
-use ::serde::Deserialize;
-use ::std::string::String;
 use crate::structs::common::*;
+use chrono::offset::FixedOffset;
+use chrono::DateTime;
+use serde::Deserialize;
+use std::string::String;
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Root {
-	pub data: Vec<Season>
+	pub data: Vec<Season>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Season {
 	#[serde(rename = "_index")]
 	pub index: String,
@@ -20,10 +20,10 @@ pub struct Season {
 	pub uuid: String,
 	pub attributes: Attributes,
 	pub links: Links,
-	pub included: Included
+	pub included: Included,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Attributes {
 	pub title: String,
 	pub description: String,
@@ -35,21 +35,21 @@ pub struct Attributes {
 	pub published_at: DateTime<FixedOffset>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct EpisodesAvailable {
 	pub sponsor: bool,
 	pub member: bool,
 	pub public: bool,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Links {
 	#[serde(rename = "self")]
 	pub reference: String,
 	pub episodes: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Included {
 	pub images: Vec<Image>,
 }

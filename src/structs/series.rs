@@ -1,10 +1,10 @@
-use ::chrono::DateTime;
-use ::chrono::offset::FixedOffset;
-use ::serde::Deserialize;
-use ::std::string::String;
 use crate::structs::common::*;
+use chrono::offset::FixedOffset;
+use chrono::DateTime;
+use serde::Deserialize;
+use std::string::String;
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Root {
 	pub data: Vec<Series>,
 
@@ -12,10 +12,10 @@ pub struct Root {
 	pub page: Option<u16>,
 	pub per_page: Option<u16>,
 	pub total_pages: Option<u16>,
-	pub total_results: Option<u32>
+	pub total_results: Option<u32>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Series {
 	#[serde(rename = "_index")]
 	pub index: String,
@@ -27,11 +27,10 @@ pub struct Series {
 	pub attributes: Attributes,
 	pub links: Links,
 	pub canonical_links: CanonicalLinks,
-	pub included: Included
+	pub included: Included,
 }
 
-
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Attributes {
 	pub title: String,
 	pub slug: String,
@@ -55,7 +54,7 @@ pub struct Attributes {
 	pub blacklisted_countries: Vec<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Links {
 	#[serde(rename = "self")]
 	pub reference: String,
@@ -68,14 +67,14 @@ pub struct Links {
 	pub rich_card_reference_url: Option<String>,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct CanonicalLinks {
 	#[serde(rename = "self")]
 	pub reference: String,
 	pub s1e1: String,
 }
 
-#[derive(Deserialize)]
+#[derive(Debug, Deserialize)]
 pub struct Included {
 	pub images: Vec<Image>,
 }
