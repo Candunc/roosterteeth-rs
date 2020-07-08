@@ -35,13 +35,15 @@ pub struct Attributes {
 	pub member_golive_at: DateTime<FixedOffset>,
 
 	//	pub frame_sizes: Vec<String>,
+	//	intro_starts_at: Option<()>,
+	// intro_ends_at: Option<()>,
 	pub media_type: String,
 	pub member_tier: String,
 	//	pub bandwidth: bool,
 	pub embed: bool,
 	pub is_sponsors_only: bool,
-	pub image_pattern_url: String,
-	pub bif_url: String,
+	pub image_pattern_url: Option<String>,
+	pub bif_url: Option<String>,
 	pub ad_config: Option<AdConfig>,
 }
 
@@ -51,7 +53,7 @@ pub struct AdConfig {
 	pub caid: String,
 	pub afid: String,
 	pub prof: String,
-	pub ad_timestamps: Vec<u32>,
+	pub ad_timestamps: Option<Vec<u32>>,
 	pub preroll: Vec<String>,
 	pub midroll: Vec<String>,
 }
