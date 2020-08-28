@@ -45,7 +45,7 @@ fn get_seasons() {
 #[test]
 fn get_season_episodes() {
 	let requests = Requests::new(Credential::Anonymous);
-	let episodes = requests.get_season_episodes("red-vs-blue-season-1");
+	let episodes = requests.get_season_episodes("red-vs-blue-season-1", None);
 
 	assert_eq!(&episodes[0].attributes.title, "Episode 1: Why Are We Here?");
 
@@ -88,4 +88,20 @@ fn get_video() {
 		&video.attributes.content_uuid,
 		"0006f0d4-464e-11e7-a302-065410f210c4"
 	);
+}
+
+#[test]
+fn process_new_videos() {
+	/*
+	We can't actually process anything because we are comparing against live
+	data - nothing predetermined. However, by processing the latest episode of
+	something, any newly implemented API that were previously incorrectly typed
+	will now fail upon running this test.
+	*/
+	let requests = Requests::new(Credential::Anonymous);
+
+	let seasons = requests.get_seasons("rt-animated-adventures", None);
+	let episodes = requests.get_season_episodes(&seasons[0].attributes.slug, None);
+
+	assert_eq!(&episodes[0].attributes.show_slug, "rt-animated-adventures");
 }

@@ -161,13 +161,12 @@ impl Requests {
 
 	/// Gets all season information from a specific series from its slug.
 	pub fn get_seasons<'a>(&self, slug: &'a str, order: Option<&'a str>) -> Vec<seasons::Season> {
-		let mut url = format!("{}/shows/{}/seasons?order=", API_URL, slug);
-
-		if order == None {
-			url.push_str("desc");
-		} else {
-			url.push_str(order.unwrap());
-		}
+		let url = format!(
+			"{}/shows/{}/seasons?order={}",
+			API_URL,
+			slug,
+			order.unwrap_or("desc"),
+		);
 
 		let result: seasons::Root = self.client.get(&url).send().unwrap().json().unwrap();
 
@@ -175,11 +174,16 @@ impl Requests {
 	}
 
 	/// Gets the episodes belonging to a specific season by its slug.
-	pub fn get_season_episodes<'a>(&self, slug: &'a str) -> Vec<episodes::Episode> {
-		// https://svod-be.roosterteeth.com/api/v1/seasons/red-vs-blue-season-1/episodes?order=asc
+	pub fn get_season_episodes<'a>(
+		&self,
+		slug: &'a str,
+		order: Option<&'a str>,
+	) -> Vec<episodes::Episode> {
 		let url = format!(
-			"{}/seasons/{}/episodes?order=asc&per_page=100",
-			API_URL, slug
+			"{}/seasons/{}/episodes?order={}&per_page=100",
+			API_URL,
+			slug,
+			order.unwrap_or("asc"),
 		);
 
 		let result: episodes::Root = self.client.get(&url).send().unwrap().json().unwrap();

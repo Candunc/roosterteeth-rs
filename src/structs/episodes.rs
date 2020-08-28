@@ -335,7 +335,7 @@ pub struct CanonicalLinks {
 pub struct Included {
 	pub images: Vec<Image>,
 	pub tags: Vec<Tag>,
-	pub cast_members: Vec<String>,
+	pub cast_members: Vec<CastMember>,
 }
 
 #[derive(Debug, Deserialize)]
@@ -354,4 +354,20 @@ pub struct Tag {
 pub struct TagAttribute {
 	pub tag: String,
 	pub slug: String,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CastMember {
+	pub id: String,
+	pub uuid: String,
+	#[serde(rename = "type")]
+	pub kind: String,
+	pub attributes: CastMemberAttributes,
+	//	pub links: bool,
+	//	pub included: bool,
+}
+
+#[derive(Debug, Deserialize)]
+pub struct CastMemberAttributes {
+	pub name: String,
 }
