@@ -304,7 +304,6 @@ pub struct Links {
 	pub related_shows: String,
 	pub channel: String,
 	pub season: String,
-	pub related: String,
 	pub next: String,
 	pub videos: String,
 	pub products: String,

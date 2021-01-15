@@ -6,7 +6,7 @@ use std::fmt;
 
 use crate::structs::*;
 
-const USER_AGENT: &'static str = "Mozilla/5.0 roosterteeth-rs/0.1.0 reqwest/0.10.4";
+const USER_AGENT: &'static str = "Mozilla/5.0 roosterteeth-rs/0.3.1 reqwest/0.11";
 
 const LOGIN_URL: &'static str = "https://auth.roosterteeth.com/oauth/token";
 const API_URL: &'static str = "https://svod-be.roosterteeth.com/api/v1";

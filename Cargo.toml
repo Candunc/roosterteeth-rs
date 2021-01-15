@@ -1,6 +1,6 @@
 [package]
 name = "roosterteeth_rs"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["Duncan Bristow <duncan_bristow@candunc.com>"]
 description = "Rust Bindings for the RoosterTeeth SVOD API"
 license = "Apache-2.0"
@@ -15,5 +15,5 @@ serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 
 [dependencies.reqwest]
-version = "0.10"
+version = "0.11"
 features = ["blocking", "json"]

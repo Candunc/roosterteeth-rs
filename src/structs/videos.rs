@@ -8,6 +8,11 @@ pub struct Root {
 	pub data: Vec<Video>,
 }
 
+/**
+The Video struct is a strongly typed wrapper of an episode's video endpoint.
+The full json format can be explored in your browser [here](https://svod-be.roosterteeth.com/api/v1/watch/red-vs-blue-season-2-episode-22/videos),
+or explore the object's fields below.
+*/
 #[derive(Debug, Deserialize)]
 pub struct Video {
 	#[serde(rename = "_index")]
@@ -35,8 +40,8 @@ pub struct Attributes {
 	pub member_golive_at: DateTime<FixedOffset>,
 
 	//	pub frame_sizes: Vec<String>,
-	//	intro_starts_at: Option<()>,
-	// intro_ends_at: Option<()>,
+	//	pub intro_starts_at: Option<()>,
+	//	pub intro_ends_at: Option<()>,
 	pub media_type: String,
 	pub member_tier: String,
 	//	pub bandwidth: bool,

@@ -15,6 +15,11 @@ pub struct Root {
 	pub total_results: Option<u32>,
 }
 
+/**
+The Series struct is a strongly typed wrapper of the show endpoint.
+The full json format can be explored in your browser [here](https://svod-be.roosterteeth.com/api/v1/shows?per_page=1000),
+or explore the object's fields below.
+*/
 #[derive(Debug, Deserialize)]
 pub struct Series {
 	#[serde(rename = "_index")]

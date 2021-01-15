@@ -9,6 +9,11 @@ pub struct Root {
 	pub data: Vec<Season>,
 }
 
+/**
+The Season struct is a strongly typed wrapper of a show's seasons endpoint.
+The full json format can be explored in your browser [here](https://svod-be.roosterteeth.com/api/v1/shows/red-vs-blue/seasons?order=desc),
+or explore the object's fields below.
+*/
 #[derive(Debug, Deserialize)]
 pub struct Season {
 	#[serde(rename = "_index")]

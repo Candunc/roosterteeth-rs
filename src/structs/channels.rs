@@ -11,6 +11,11 @@ pub struct Root {
 	pub total_results: u32,
 }
 
+/**
+The Channel struct is a strongly typed wrapper of the channels endpoint.
+The full json format can be explored in your browser [here](https://svod-be.roosterteeth.com/api/v1/channels),
+or explore the object's fields below.
+*/
 #[derive(Debug, Deserialize)]
 pub struct Channel {
 	#[serde(rename = "_index")]
@@ -46,7 +51,6 @@ pub struct Links {
 	#[serde(rename = "self")]
 	pub reference: String,
 	pub shows: String,
-	pub movies: String,
 	pub product_collections: String,
 	pub featured_items: String,
 	pub episodes: String,
