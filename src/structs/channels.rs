@@ -18,13 +18,9 @@ or explore the object's fields below.
 */
 #[derive(Debug, Deserialize)]
 pub struct Channel {
-	#[serde(rename = "_index")]
-	pub index: String,
-
 	#[serde(rename = "type")]
 	pub kind: String,
 
-	pub sort: Vec<u16>,
 	pub id: u16,
 	pub uuid: String,
 
